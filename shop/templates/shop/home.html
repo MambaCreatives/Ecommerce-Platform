@@ -1,0 +1,34 @@
+{% extends 'shop/base.html' %}
+{% load static %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h1>Featured Products</h1>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4"> {# Bootstrap Grid #}
+        {% for product in products %}
+        <div class="col">
+            <div class="card h-100"> {# Bootstrap Card and h-100 for equal height #}
+                <a href="{% url 'product_detail' product.slug %}" class="text-decoration-none text-dark"> {# Link styling #}
+                    {% if product.image %}
+                    <img src="{{ product.image.url }}" class="card-img-top img-fluid" alt="{{ product.name }}" style="object-fit: contain; height: 200px;">
+                    {% else %}
+                    <img src="{% static 'placeholder.jpg' %}" class="card-img-top img-fluid" alt="Product Placeholder" style="object-fit: contain; height: 200px;">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">Price: ${{ product.price }}</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col">
+            <p>No products available.</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

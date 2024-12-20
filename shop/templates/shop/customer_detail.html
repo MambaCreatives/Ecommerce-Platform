@@ -1,0 +1,26 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Customer Detail{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1>Customer Details</h1>
+
+  <div class="card">
+    <div class="card-body">
+      <p><strong>ID:</strong> {{ customer.id }}</p>
+      <p><strong>Name:</strong> {{ customer.name }}</p>
+      <p><strong>Email:</strong> {{ customer.email }}</p>
+      {% if customer.address %}
+        <p><strong>Address:</strong> {{ customer.address }}</p>
+      {% endif %}
+      {% if customer.phone_number %}
+        <p><strong>Phone Number:</strong> {{ customer.phone_number }}</p>
+      {% endif %}
+      {# Add other customer details here as needed #}
+    </div>
+  </div>
+
+  <a href="{% url 'customer_list' %}" class="btn btn-primary">Back to Customer List</a>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Confirm Delete Category{% endblock %}
+
+{% block content %}
+<h1>Confirm Delete Category</h1>
+
+<p>Are you sure you want to delete the category "<strong>{{ category.name }}</strong>"?</p>
+
+<form method="post">
+  {% csrf_token %}
+  <button type="submit">Yes, Delete</button>
+  <a href="{% url 'category_list' %}">Cancel</a>
+</form>
+
+{% endblock %}
+{% extends 'shop/base.html' %}
+
+{% block title %}Confirm Delete Category{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1>Confirm Delete Category</h1>
+
+  <p>Are you sure you want to delete the category "<strong>{{ category.name }}</strong>"?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="d-flex justify-content-between">
+      <button type="submit" class="btn btn-danger">Yes, Delete</button>
+      <a href="{% url 'category_list' %}" class="btn btn-secondary">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}

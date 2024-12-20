@@ -1,0 +1,30 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6">
+      {% if product.image %}
+        <img src="{{ product.image.url }}" alt="{{ product.name }}" class="img-fluid mb-3">
+      {% endif %}
+    </div>
+    <div class="col-md-6">
+      <h1>{{ product.name }}</h1>
+      <p>{{ product.description }}</p>
+      <p>Price: ${{ product.price }}</p>
+      <p>Stock: {{ product.stock }}</p>
+
+      {# Add buttons or links for adding to cart or wishlist (if applicable) #}
+      {% if product.stock > 0 %}
+        <a href="{% url 'shop:cart_item_add' product.pk %}" class="btn btn-primary mb-2">Add to Cart</a>
+        {% if 'wishlist' in request.session.keys %}  <a href="{% url 'add_to_wishlist' product.pk %}" class="btn btn-secondary">Add to Wishlist</a>
+        {% endif %}
+      {% else %}
+        <p class="text-danger">Out of Stock</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}

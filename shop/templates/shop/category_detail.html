@@ -1,0 +1,24 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}Category Detail: {{ category.name }}{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+  <h1>{{ category.name }}</h1>
+  <p>{{ category.description }}</p>
+  {# Add any additional details for the category here #}
+
+  {% if category.products.all %}
+    <h2>Products in this Category</h2>
+    <ul class="list-group">
+      {% for product in category.products.all %}
+        <li class="list-group-item">
+          <a href="{% url 'shop:product_detail' product.pk %}">{{ product.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>There are currently no products in this category.</p>
+  {% endif %}
+</div>
+{% endblock %}

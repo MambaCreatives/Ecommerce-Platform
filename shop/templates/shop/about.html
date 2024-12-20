@@ -1,0 +1,36 @@
+{% extends 'shop/base.html' %}
+
+{% block title %}About Us{% endblock %}
+
+{% block content %}
+<div class="container mt-5">  {# Added a container and margin-top #}
+    <div class="row">
+        <div class="col-md-8 offset-md-2"> {# Center the content #}
+            <h1>About Our Ecommerce Store</h1>
+
+            <p>Welcome to [Your Store Name]! We are passionate about providing high-quality [type of products you sell] to our customers.</p>
+
+            <p>Our story began in [Year] when [briefly explain the origin of your store]. Since then, we have been committed to [mention your core values, e.g., excellent customer service, affordable prices, sustainable practices].</p>
+
+            <h2>Our Mission</h2>
+            <p>Our mission is to [clearly state your mission statement, e.g., "provide the best online shopping experience for [target audience] by offering a wide selection of [products] at competitive prices."].</p>
+
+            <h2>What We Offer</h2>
+            <ul>
+                <li>Wide selection of [product category 1]</li>
+                <li>High-quality [product category 2]</li>
+                <li>Competitive prices</li>
+                <li>Fast and reliable shipping</li>
+                <li>Excellent customer support</li>
+                {# Add more list items as needed #}
+            </ul>
+
+            <h2>Our Team</h2>
+            <p>[Optional: Briefly introduce your team or key personnel. You can include images and short bios if you want. Use Bootstrap's image classes like `img-fluid` and `rounded` for better image styling.]</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, please don't hesitate to <a href="{% url 'shop:contact' %}">contact us</a>.</p> {# Added shop namespace #}
+        </div>
+    </div>
+</div>
+{% endblock %}
